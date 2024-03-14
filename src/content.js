@@ -2,10 +2,10 @@
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (message.action === 'addmedia') {
       // Perform action here
-      addMedia();
-      console.log('Received addmedia message');
-      // Send a response back to the popup script
       sendResponse({ success: true });
+      addMedia();
+      // Send a response back to the popup script
+      
   }
 });
 
