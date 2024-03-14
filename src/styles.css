@@ -1,6 +1,6 @@
 .overlay-image {
     position: fixed;
-    top: 300px;
+    top: 30px;
     left: 30px;
     background-color: red;
     z-index: 9999; /* Increase z-index to ensure the image appears above other content */
