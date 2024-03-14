@@ -4,8 +4,10 @@ from youtube_transcript_api import YouTubeTranscriptApi
 # obtained by the .get_transcript() function
 # and this time it gets only the subtitles that 
 # are of english language.
-srt = YouTubeTranscriptApi.get_transcript("NjwQzJuHG4I", 
+srt = YouTubeTranscriptApi.get_transcript("ZqTbOAmh3Tc", 
                                           languages=['en'])
  
 # prints the result
-print(srt)
+
+for i in srt:
+    print(i['text'])
