@@ -53,7 +53,22 @@ def int_to_en(num):
 
     raise AssertionError('num is too large: %s' % str(num))
 
-print(srt)
+#print(srt)
+
+def removePunctuation(word):
+    import string
+    returnString = ""
+    punctuation = False
+
+    for char in word:
+        if char in string.punctuation:
+            punctuation = True
+
+            continue
+        else:
+            returnString += char
+        
+    return returnString, punctuation
 
 formatted_script = []
 
