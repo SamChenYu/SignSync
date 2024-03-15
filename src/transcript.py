@@ -1,3 +1,4 @@
+import ai
 from youtube_transcript_api import YouTubeTranscriptApi
  
 # assigning srt variable with the list of dictionaries 
