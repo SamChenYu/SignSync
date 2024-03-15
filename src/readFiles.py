@@ -51,6 +51,23 @@ def generate_csv(directory):
     csv_file_path = os.path.join(directory, 'output.csv')
     df.to_csv(csv_file_path,index=False)
 
+def generate_array(directory):
+    words = []
+    # List all files in the directory
+    files = os.listdir(directory)
+
+    # Iterate over each file
+    for file in files:
+        # Construct the file path
+        file_path = os.path.join(directory, file)
+        
+        # Check if the file is a regular file (not a directory)
+        if os.path.isfile(file_path):
+            # Open the file and read its contents
+            with open(file_path, 'r') as f:
+                words.append( extract_file_name(file) )
+    return words
+
     
 def format_contents(contents):
     contents.replace('\n', '\\n')
@@ -78,7 +95,8 @@ def main():
     # context = generate_context(directory)
     # print(context)
 
-    generate_csv(directory)
+    words = generate_array(directory)
+    print(words)
 
 if __name__ == "__main__":
     main()
