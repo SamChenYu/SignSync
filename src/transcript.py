@@ -72,6 +72,17 @@ def removePunctuation(word):
 
 formatted_script = []
 
+def checkForSymbols(word):
+    unalteredString = ""
+
+    for char in word:
+        if char == "@" or char == "%":
+            unalteredString += " " + removePunctuation([x for x in ai.sendRequest(char, 2).split(" ") if '"' in x][1])[0]
+        else:
+            unalteredString += char
+
+    return unalteredString
+
 import re
 
 def find_numbers(text):
