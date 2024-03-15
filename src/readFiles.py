@@ -1,8 +1,5 @@
 import os
 
-a = "{"
-b = "}"
-
 def generate_context(directory):
     prefix = lambda x : f'The SigML HanNoSys for the word {x}:\n'
     context = ""
