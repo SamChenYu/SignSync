@@ -1,4 +1,5 @@
 import os
+import pandas as pd
 
 def generate_context(directory):
     prefix = lambda x : f'The SigML HanNoSys for the word {x}:\n'
@@ -22,6 +23,34 @@ def generate_context(directory):
 
                 context += f"\n{prefix(extract_file_name(file))} {contents}"
     return context
+
+def generate_csv(directory):
+    files = os.listdir(directory)
+    data = []  # List to store file name and contents
+
+    # Iterate over each file
+    for file in files:
+        # Construct the file path
+        file_path = os.path.join(directory, file)
+        
+        # Check if the file is a regular file (not a directory)
+        if os.path.isfile(file_path):
+            # Open the file and read its contents
+            with open(file_path, 'r') as f:
+                # Read the contents of the file
+                contents = f.read()
+                contents = format_contents(contents)
+
+                # Append file name and contents to the data list
+                data.append((extract_file_name(file), contents))
+
+    # Create a DataFrame from the data list
+    df = pd.DataFrame(data, columns=['File Name', 'Contents'])
+
+    # Write DataFrame to a CSV file
+    csv_file_path = os.path.join(directory, 'output.csv')
+    df.to_csv(csv_file_path,index=False)
+
     
 def format_contents(contents):
     contents.replace('\n', '\\n')
@@ -40,14 +69,16 @@ def extract_file_name(file_path):
     return desired_text
 
 def main():
-    # Provide the directory path
+    # # Provide the directory path
     directory = 'SignFiles'
 
-    context_prefix = "You are to translate words into their equivalent SigML HanNoSys code which will be given to another program that will animate based on the code given. These are examples of words and their sigML HanNoSys code. You will also be able to translate who sentences."
+    # context_prefix = "You are to translate words into their equivalent SigML HanNoSys code which will be given to another program that will animate based on the code given. These are examples of words and their sigML HanNoSys code. You will also be able to translate who sentences."
 
-    # Call the function to read files in the directory
-    context = generate_context(directory)
-    print(context)
+    # # Call the function to read files in the directory
+    # context = generate_context(directory)
+    # print(context)
+
+    generate_csv(directory)
 
 if __name__ == "__main__":
     main()
