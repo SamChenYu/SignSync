@@ -99,8 +99,8 @@ for i in srt:
         if "n't" in x:
             x = x.replace("n't", " not")
         
-        if "%" in x:
-            x = (x.replace("%", " percent"))
+        if "%" in x or "@" in x:
+            x = checkForSymbols(x)
 
         formatted_script.append(x)
 
