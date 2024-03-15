@@ -1,11 +1,23 @@
 import ai
 from youtube_transcript_api import YouTubeTranscriptApi
- 
+
+inputURL = "https://www.youtube.com/watch?v=mxz8KyV3Ydc?si=tF688HKUdkpRfVy5" #Input from javascript PLEASE CHANGE THIS WHEN WE HAVE SERVERS WORKING THEN WORK ON SENDING BACK OUTPUT TO JS
+
+def remove_prefix(URL):
+    if URL.startswith("https://www.youtube.com/watch?v="):
+        return URL[len("https://www.youtube.com/watch?v="):]  
+    else:
+        return "ERROR"
+
+ID = remove_prefix(inputURL)
+
+
+
 # assigning srt variable with the list of dictionaries 
 # obtained by the .get_transcript() function
 # and this time it gets only the subtitles that 
 # are of english language.
-srt = YouTubeTranscriptApi.get_transcript("mxz8KyV3Ydc?si=tF688HKUdkpRfVy5",
+srt = YouTubeTranscriptApi.get_transcript("ID",
                                           languages=['en'])
  
 # prints the result
