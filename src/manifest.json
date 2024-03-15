@@ -1,0 +1,20 @@
+{
+  "name": "Signsync",
+  "version": "1.0.0",
+  "description": "Translation of YouTube subtitles to sign languages",
+  "manifest_version": 3,
+  "author": "Batuhan Ozturk, Ivet Lobo, Sam Chen Yu",
+  "action": {
+    "default_popup": "index.html",
+    "default_title": "Signsync"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["popup.js"]
+    }
+  ],
+  "content_security_policy": {
+      "extension_pages": "script-src 'self' 'wasm-unsafe-eval'; object-src 'self';"
+}
+}
