@@ -17,7 +17,7 @@ ID = remove_prefix(inputURL)
 # obtained by the .get_transcript() function
 # and this time it gets only the subtitles that 
 # are of english language.
-srt = YouTubeTranscriptApi.get_transcript("ID",
+srt = YouTubeTranscriptApi.get_transcript(ID,
                                           languages=['en'])
  
 # prints the result
