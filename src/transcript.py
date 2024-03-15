@@ -108,16 +108,24 @@ singular_script = []
 
 for i in formatted_script:
     word_list = (i).split(' ')
+
     for j in word_list:
+        if removePunctuation(j)[1] == True:
+            formattedDown = removePunctuation(j)[0]
+            try:
+                j = (removePunctuation([x for x in ai.sendRequest(formattedDown, 1).split(" ") if '"' in x][1])[0])
+            except IndexError:
+                j = (removePunctuation([x for x in ai.sendRequest(formattedDown, 1).split(" ") if '"' in x][0])[0])
+
         number = find_numbers(j)
 
         if number:
             number[0] = int(number[0])
-            print(number)
+            #print(number)
             singular_script.append(int_to_en(number[0]))
         else:
             singular_script.append(j)
 
 
 
-print(singular_script)
+#print(singular_script)
