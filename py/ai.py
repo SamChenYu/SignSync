@@ -2,7 +2,7 @@ import os
 import openai
 
 # OpenAI Config
-openai.api_key = "e57f0252-3694-4ecb-ab01-bad652801b20"
+openai.api_key = "<your_api_key>"
 openai.api_base = "https://polite-ground-030dc3103.4.azurestaticapps.net/api/v1"
 openai.api_type = 'azure'
 openai.api_version = '2023-05-15'
