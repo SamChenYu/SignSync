@@ -2,7 +2,8 @@
 
 Creating a browser extension that converts auto-generated YouTube subtitles into real-time sign language!
 
-
+CWA Signing Avatars Sourced from University of East Anglia  
+https://vhg.cmp.uea.ac.uk/tech/jas/vhg2021/ 
 
 
 <div align="center">
