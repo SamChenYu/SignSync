@@ -21,7 +21,7 @@
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["popup.js"]
+      "js": ["popup.js", "youtubeScript.js"]
     }
   ],
   "content_security_policy": {

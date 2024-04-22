@@ -1,3 +1,6 @@
+// runs in the background and detects whether the active tab is a youtube video playing
+
+
 chrome.tabs.onActivated.addListener(function(activeInfo) {
     chrome.tabs.get(activeInfo.tabId, function(tab) {
         var url = tab.url;
@@ -39,6 +42,20 @@ function fetchSubtitles(videoUrl) {
         console.error('Error fetching subtitles:', error);
     });
 }
+
+
+
+// youtube script injection
+
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+    if (message.action === 'videoPlay') {
+        console.log('Video is playing');
+    } else if (message.action === 'videoPause') {
+        console.log('Video is paused');
+    } else if (message.action === 'videoSeek') {
+        console.log(`Video seeked to ${message.currentTime}`);
+    }
+});
 
 
 
