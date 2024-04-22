@@ -13,9 +13,12 @@ chrome.tabs.onActivated.addListener(function(activeInfo) {
 const openTest = (inputURL) => {
 
     const regex = /https:\/\/www\.youtube\.com\/watch\?v=/;
-
+    
     if (inputURL.match(regex)) {
         console.log('url matches');
+
+        
+    
         // call python script
         fetchSubtitles(inputURL);
     } else {
@@ -57,5 +60,31 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     }
 });
 
+
+
+// Listen for messages from content scripts
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+    // Check if the message contains a timestamp
+    if (message.timestamp) {
+        // Do something with the received timestamp
+        console.log("Received timestamp:", message.timestamp);
+    }
+});
+
+
+
+
+// Extracting the current subtitles
+
+// Listen for messages from content scripts
+chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
+    // Check if the message is from the content script and contains subtitles
+    if (sender.tab && message.subtitles) {
+        const subtitles = message.subtitles;
+        console.log("Received subtitles from content script:", subtitles);
+        // You can now translate the subtitles or perform any other action
+        // For demonstration, let's just log the subtitles here
+    }
+});
 
 
