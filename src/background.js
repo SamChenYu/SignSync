@@ -29,6 +29,8 @@ const openTest = (inputURL) => {
 
 // Example code to fetch subtitles from the local server
 function fetchSubtitles(videoUrl) {
+
+    /*
     fetch('http://127.0.0.1:5000/extract-subtitles', {
         method: 'POST',
         headers: {
@@ -44,21 +46,10 @@ function fetchSubtitles(videoUrl) {
     .catch(error => {
         console.error('Error fetching subtitles:', error);
     });
+    */
 }
 
 
-
-// youtube script injection
-
-chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-    if (message.action === 'videoPlay') {
-        console.log('Video is playing');
-    } else if (message.action === 'videoPause') {
-        console.log('Video is paused');
-    } else if (message.action === 'videoSeek') {
-        console.log(`Video seeked to ${message.currentTime}`);
-    }
-});
 
 
 
@@ -81,7 +72,7 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
     // Check if the message is from the content script and contains subtitles
     if (sender.tab && message.subtitles) {
         const subtitles = message.subtitles;
-        console.log("Received subtitles from content script:", subtitles);
+        console.log( subtitles);
         // You can now translate the subtitles or perform any other action
         // For demonstration, let's just log the subtitles here
     }

@@ -1,23 +1,4 @@
-// Injected into YouTube pages
-/*
-const player = document.querySelector('video');
 
-player.addEventListener('play', () => {
-    chrome.runtime.sendMessage({ action: 'videoPlay' });
-});
-
-player.addEventListener('pause', () => {
-    chrome.runtime.sendMessage({ action: 'videoPause' });
-});
-
-player.addEventListener('seeked', () => {
-    chrome.runtime.sendMessage({ action: 'videoSeek', currentTime: player.currentTime });
-});
-*/
-
-
-
-// content.js
 
 let lastSubtitles = null; // Variable to store the last extracted subtitles
 
@@ -28,11 +9,40 @@ function extractSubtitles() {
 
     // Check if subtitles are present
     if (subtitleElement) {
-        // Extract text content of the subtitle element
-        const subtitleText = subtitleElement.textContent.trim();
+
+
+
+        console.log(subtitleElement);
+        // Get all subtitle elements within the container
+        const subtitleElements = document.querySelectorAll('.ytp-caption-segment');
+
+        // Initialize an array to store individual subtitle lines
+        let subtitles = [];
+
+        // Iterate over each subtitle element
+        subtitleElements.forEach(subtitleElement => {
+            // Extract text content of the subtitle element
+            const subtitleText = subtitleElement.textContent.trim();
+            
+            // Push the extracted subtitle text to the array
+            subtitles.push(subtitleText);
+        });
         
+        // Join the individual subtitle lines into a single string with line breaks
+        const subtitlesText = subtitles.join('\n');
+
         // Return the extracted subtitle text
-        return subtitleText;
+        return subtitlesText;
+
+
+
+
+
+
+
+
+
+
     } else {
         // Return null if subtitles are not found
         return null;
@@ -55,7 +65,7 @@ function sendSubtitlesToBackground() {
 }
 
 // Set up an interval to continuously check for subtitle changes
-const intervalId = setInterval(sendSubtitlesToBackground, 1000); // Adjust interval as needed (e.g., every second)
+const intervalId = setInterval(sendSubtitlesToBackground, 150); // Adjust interval as needed (e.g., every 1/3 second)
 
 // Stop the interval when the YouTube page is unloaded
 window.addEventListener('unload', function() {
