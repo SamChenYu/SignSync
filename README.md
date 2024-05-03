@@ -7,8 +7,8 @@ https://vhg.cmp.uea.ac.uk/tech/jas/vhg2021/
 
 
 <div align="center">
-  <img width="900" alt="Screenshot 2024-03-15 at 5 05 36 PM" src="https://github.com/SamChenYu/SignSync/assets/150127006/235c337e-5ca5-492e-8dbb-e2932df6f64a">
-  <img width="900" alt="image" src="https://github.com/SamChenYu/SignSync/assets/150127006/fd48af5f-edae-42a6-9334-c189d34a2763">
+<img width="300" alt="image" src="https://github.com/SamChenYu/SignSync/assets/150127006/e6dbb6d7-219e-4a03-93e4-41e0e0bfd555">
+  <img width="200" alt="image" src="https://github.com/SamChenYu/SignSync/assets/150127006/2f39bb76-96a0-4ed9-b289-e0ba9fc5ddfc">
 </div>
 
 Note: A Flask Python server must be locally hosted in order to call the Youtube subtitle API
